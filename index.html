@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmWise AI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-wrap">
+        <div class="brand-icon">
+          <span aria-hidden="true">🌾</span>
+        </div>
+        <div>
+          <div class="brand-title">FarmWise AI</div>
+          <div class="brand-subtitle">Field Decisions</div>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a class="nav-link active" href="#">
+          <span aria-hidden="true">⌂</span>
+          <span>Home</span>
+        </a>
+        <a class="nav-link" href="#">
+          <span aria-hidden="true">＋</span>
+          <span>New Decision</span>
+        </a>
+        <a class="nav-link" href="#">
+          <span aria-hidden="true">☰</span>
+          <span>History</span>
+        </a>
+      </nav>
+
+      <div class="nav-footer">
+        <div class="mini-card warning-card">
+          <span class="icon-badge">☔</span>
+          <div>
+            <div class="label-muted small">Weather Watch</div>
+            <div class="bold-text">Rain expected in 5h</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">FarmWise AI</div>
+          <h1 class="page-title">What decision do you need help with?</h1>
+        </div>
+        <button class="btn btn-primary" id="newDecisionBtn">+ New Decision</button>
+      </header>
+
+      <section class="home-layout">
+        <section class="question-panel">
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Decision Assistant</div>
+              <h2 class="section-title">What is happening?</h2>
+            </div>
+            <button class="btn btn-ghost small">Use location</button>
+          </div>
+
+          <div class="tile-grid">
+            <article class="decision-tile selected" data-problem="Possible fungal disease">
+              <span class="tile-icon">🌱</span>
+              <div>
+                <h3>Crop Problem</h3>
+                <p>I see something wrong with my crop.</p>
+              </div>
+            </article>
+            <article class="decision-tile" data-problem="Watering concern">
+              <span class="tile-icon">💧</span>
+              <div>
+                <h3>Watering</h3>
+                <p>Should I water now or wait?</p>
+              </div>
+            </article>
+            <article class="decision-tile" data-problem="Weather timing">
+              <span class="tile-icon">🌦️</span>
+              <div>
+                <h3>Weather Timing</h3>
+                <p>Should I act before the weather changes?</p>
+              </div>
+            </article>
+            <article class="decision-tile" data-problem="Pest / disease action">
+              <span class="tile-icon">🐛</span>
+              <div>
+                <h3>Pest / Disease</h3>
+                <p>What should I do about this problem?</p>
+              </div>
+            </article>
+            <article class="decision-tile" data-problem="Farm decision">
+              <span class="tile-icon">📋</span>
+              <div>
+                <h3>General Farm Decision</h3>
+                <p>Help me decide my next action.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="form-panel">
+            <div class="two-column">
+              <div class="field-group">
+                <label for="cropSelect">Crop</label>
+                <select id="cropSelect">
+                  <option value="Tomato" selected>Tomato</option>
+                  <option value="Rice">Rice</option>
+                  <option value="Chilli">Chilli</option>
+                  <option value="Maize">Maize</option>
+                  <option value="Wheat">Wheat</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="growthStage">Growth stage</label>
+                <select id="growthStage">
+                  <option value="Flowering" selected>Flowering</option>
+                  <option value="Vegetative">Vegetative</option>
+                  <option value="Fruit setting">Fruit setting</option>
+                  <option value="Maturity">Maturity</option>
+                  <option value="Seedling">Seedling</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <div class="field-group">
+                <label for="farmSize">Farm size</label>
+                <select id="farmSize">
+                  <option value="2 acres" selected>2 acres</option>
+                  <option value="5 acres">5 acres</option>
+                  <option value="10 acres">10 acres</option>
+                  <option value="25 acres">25 acres</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="urgency">Urgency</label>
+                <select id="urgency">
+                  <option value="high" selected>Need action now</option>
+                  <option value="medium">Can wait until tomorrow</option>
+                  <option value="low">Can wait several days</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <div class="field-group">
+                <label for="budget">Budget</label>
+                <select id="budget">
+                  <option value="Low" selected>Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="labor">Labor</label>
+                <select id="labor">
+                  <option value="2 workers" selected>1–2 workers</option>
+                  <option value="5 workers">3–5 workers</option>
+                  <option value="8 workers">6+ workers</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="two-column">
+              <div class="field-group">
+                <label for="water">Water availability</label>
+                <select id="water">
+                  <option value="Limited" selected>Limited</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Good">Good</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="weatherRain">Rain probability</label>
+                <select id="weatherRain">
+                  <option value="70" selected>70%</option>
+                  <option value="30">30%</option>
+                  <option value="10">10%</option>
+                  <option value="90">90%</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="image-upload-block">
+              <label class="upload-zone" for="imageUpload">
+                <input type="file" id="imageUpload" accept="image/*" />
+                <span class="upload-icon">＋</span>
+                <div>
+                  <div class="bold-text">Upload a crop photo</div>
+                  <div class="muted small">Optional visual symptom check</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn-primary" id="analyzeBtn">Analyze decision</button>
+              <button class="btn btn-ghost" id="demoBtn">Use demo scenario</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="result-panel">
+          <section class="status-card current-context">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">Current Situation</div>
+                <h2 class="section-title">Your field</h2>
+              </div>
+              <span class="status-pill">Live Demo</span>
+            </div>
+
+            <div class="situation-summary">
+              <div class="summary-row">
+                <span class="label-muted">Crop</span>
+                <span class="value-text" id="summaryCrop">Tomato</span>
+              </div>
+              <div class="summary-row">
+                <span class="label-muted">Stage</span>
+                <span class="value-text" id="summaryStage">Flowering</span>
+              </div>
+              <div class="summary-row">
+                <span class="label-muted">Concern</span>
+                <span class="value-text" id="summaryProblem">Possible fungal disease</span>
+              </div>
+              <div class="summary-row">
+                <span class="label-muted">Weather</span>
+                <span class="value-text warning-text" id="summaryWeather">Rain in 5h • 70%</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="result-card highlight-card">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">Recommended Action</div>
+                <h2 class="section-title">Best option</h2>
+              </div>
+              <span class="confidence-badge" id="confidenceBadge">High confidence</span>
+            </div>
+            <div class="recommended-content">
+              <div class="decision-title" id="recommendedActionTitle">Wait until tomorrow morning</div>
+              <div class="score-row">
+                <span class="suitability-label">AI decision suitability</span>
+                <span class="score-number" id="recommendedScore">84 / 100</span>
+              </div>
+              <div class="reason-text" id="recommendedReason">
+                Rain is approaching, so a weather-sensitive treatment should be delayed while you perform low-cost monitoring and remove affected plant material.
+              </div>
+            </div>
+          </section>
+
+          <section class="resource-impact">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">Resource Impact</div>
+                <h2 class="section-title">Estimated impact</h2>
+              </div>
+            </div>
+            <div class="metrics-grid">
+              <div>
+                <div class="metric-label">Cost</div>
+                <div class="metric-value" id="impactCost">Low</div>
+              </div>
+              <div>
+                <div class="metric-label">Labor</div>
+                <div class="metric-value" id="impactLabor">1–2 workers</div>
+              </div>
+              <div>
+                <div class="metric-label">Water</div>
+                <div class="metric-value" id="impactWater">Low</div>
+              </div>
+              <div>
+                <div class="metric-label">Time</div>
+                <div class="metric-value" id="impactTime">1–2 hrs</div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="decision-output">
+        <div class="section-title-row">
+          <div>
+            <div class="section-kicker">Decision Engine</div>
+            <h2 class="section-title">Action comparison</h2>
+          </div>
+          <button class="btn btn-ghost small" id="whatIfBtn">Try another scenario</button>
+        </div>
+
+        <div class="options-grid" id="optionsGrid"></div>
+
+        <section class="middle-content">
+          <div class="panel-block">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">Why did AI choose this?</div>
+                <h2 class="section-title">Decision explanation</h2>
+              </div>
+            </div>
+            <div class="explanation-text" id="reasoningText">
+              Rain is expected within the next few hours. Acting immediately with a weather-sensitive intervention is less suitable because the treatment window could be reduced by rainfall. Waiting until tomorrow morning supports a safer and more practical response while removing the most affected material now.
+            </div>
+
+            <div class="weather-row">
+              <div class="weather-item">
+                <span class="weather-icon">🌦️</span>
+                <div>
+                  <div class="metric-label">Weather compatibility</div>
+                  <div class="metric-value" id="weatherCompatibility">Recommended option: Good</div>
+                </div>
+              </div>
+              <div class="weather-item">
+                <span class="weather-icon">🌡️</span>
+                <div>
+                  <div class="metric-label">Weather snapshot</div>
+                  <div class="metric-value" id="weatherSnapshot">23°C • 78% humidity</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-block timeline-panel">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">Action Timeline</div>
+                <h2 class="section-title">Field plan</h2>
+              </div>
+            </div>
+            <div class="timeline" id="timelineList"></div>
+          </div>
+        </section>
+
+        <section class="lower-content">
+          <div class="panel-block what-if-panel">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">Try Another Scenario</div>
+                <h2 class="section-title">What if?</h2>
+              </div>
+              <button class="btn btn-ghost small" id="recalculateBtn">Recalculate</button>
+            </div>
+            <div class="scenario-controls">
+              <div class="control-block">
+                <label for="rainScenario">Rain probability</label>
+                <input type="range" min="0" max="100" value="70" id="rainScenario" />
+                <span class="compare-value" id="rainValue">70%</span>
+              </div>
+              <div class="control-block">
+                <label for="budgetScenario">Budget</label>
+                <select id="budgetScenario">
+                  <option value="Low" selected>Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+              <div class="control-block">
+                <label for="laborScenario">Labor</label>
+                <select id="laborScenario">
+                  <option value="2 workers" selected>1–2 workers</option>
+                  <option value="5 workers">3–5 workers</option>
+                  <option value="8 workers">6+ workers</option>
+                </select>
+              </div>
+              <div class="control-block">
+                <label for="waterScenario">Water</label>
+                <select id="waterScenario">
+                  <option value="Limited" selected>Limited</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Good">Good</option>
+                </select>
+              </div>
+            </div>
+            <div class="whatif-result" id="whatIfResult">
+              Changing rain probability from 70% to 10% increases the suitability of immediate targeted inspection and monitoring, but the recommendation still prioritizes a safer weather window when available.
+            </div>
+          </div>
+
+          <div class="panel-block copilot-panel">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">FarmWise Copilot</div>
+                <h2 class="section-title">Ask about this plan</h2>
+              </div>
+            </div>
+            <div class="copilot-questions">
+              <button class="chip" data-question="Why should I wait?">Why should I wait?</button>
+              <button class="chip" data-question="What if I act now?">What if I act now?</button>
+              <button class="chip" data-question="Which option costs less?">Which option costs less?</button>
+              <button class="chip" data-question="What happens if I don't act today?">What happens if I don't act today?</button>
+            </div>
+            <div class="chat-box">
+              <div class="chat-message">
+                <span class="bot-icon">✦</span>
+                <div id="copilotResponse">Rain is expected soon, so a weather-sensitive treatment is lower priority today. Inspecting affected plants and starting low-cost preventive actions is practical.</div>
+              </div>
+            </div>
+            <div class="chat-form">
+              <input type="text" id="copilotInput" placeholder="Ask a farm decision question..." />
+              <button class="btn btn-primary" id="askCopilotBtn">Ask</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="history-section">
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Decision History</div>
+              <h2 class="section-title">Recent decisions</h2>
+            </div>
+          </div>
+          <div class="history-list">
+            <article class="history-item">
+              <div class="history-date">Aug 8</div>
+              <div>
+                <div class="history-title">Tomato — Treatment timing</div>
+                <div class="history-meta">Recommended: Wait until tomorrow morning</div>
+              </div>
+            </article>
+            <article class="history-item">
+              <div class="history-date">Aug 6</div>
+              <div>
+                <div class="history-title">Rice — Watering</div>
+                <div class="history-meta">Recommended: Wait and reassess before irrigation</div>
+              </div>
+            </article>
+            <article class="history-item">
+              <div class="history-date">Aug 4</div>
+              <div>
+                <div class="history-title">Chilli — Pest concern</div>
+                <div class="history-meta">Recommended: Inspect affected area</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="feedback-section">
+          <div class="feedback-card">
+            <div class="section-title-row compact">
+              <div>
+                <div class="section-kicker">Decision Feedback</div>
+                <h2 class="section-title">Was this recommendation useful?</h2>
+              </div>
+            </div>
+            <div class="feedback-buttons">
+              <button class="btn btn-ghost" id="feedbackYes">👍 Yes</button>
+              <button class="btn btn-ghost" id="feedbackNo">👎 No</button>
+            </div>
+            <div class="feedback-message" id="feedbackMessage"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
